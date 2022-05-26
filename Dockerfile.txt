@@ -1,0 +1,12 @@
+FROM centos:7
+LABEL maintainer="mrhelloworld.com"
+WORKDIR /usr/local
+RUN mkdir -p /usr/local/java && mkdir -p /usr/local/tomcat
+ADD jdk-11.0.11_linux-x64_bin.tar.gz /usr/local/java
+ADD apache-tomcat-9.0.46.tar.gz /usr/local/tomcat
+EXPOSE 8080
+ENV JAVA_HOME /usr/local/java/jdk-11.0.11/
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["/usr/local/tomcat/apache-tomcat-9.0.46/bin/catalina.sh","run"]
+
+    
